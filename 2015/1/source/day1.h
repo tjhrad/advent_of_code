@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <chrono>
 #include <cmath>
-#include <set>
 
 #include "../../aoc_tools/source/aoc_tools.h"
 #include "../../aoc_tools/source/aoc_debug.h"

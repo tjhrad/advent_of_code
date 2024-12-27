@@ -25,7 +25,7 @@ void PartOne(const std::vector<std::string>& input_data){
   for (char c : input_data[0]){
     if (c == '('){
       floors++;
-    }else if (c == ')'){
+    } else if (c == ')'){
       floors--;
     }
   }
