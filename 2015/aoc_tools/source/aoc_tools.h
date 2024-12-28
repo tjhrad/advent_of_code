@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <sstream>
 #include <map>
+#include <chrono>
 
 std::vector<std::string> ReadFile(const std::string& file_name);
 std::vector<std::string> SplitString(std::string string_to_split,std::string delimiter);
@@ -26,5 +27,7 @@ std::vector<std::vector<int>> Multiply2DVectors(const std::vector<std::vector<in
 long long CombineIntInString(const std::string& input_data);
 int SumIntegers(const std::vector<int>& v);
 bool StringIsDigits(const std::string& input_string);
+
+void PrintTime(std::chrono::system_clock::time_point start, std::chrono::system_clock::time_point stop);
 
 #endif

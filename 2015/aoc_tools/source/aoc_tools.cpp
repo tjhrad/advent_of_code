@@ -263,3 +263,16 @@ std::string ConvertIntegerToBaseN(int num, int base)
   std::reverse(result.begin(), result.end());
   return result;
 }
+
+void PrintTime(std::chrono::system_clock::time_point start, std::chrono::system_clock::time_point stop){
+  auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+  if (duration.count() < 1000) {
+    std::cout << "Time: " << duration.count() << " microseconds" << '\n' << '\n';
+  } else if (duration.count() < 1000000) {
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::milliseconds>(duration).count() 
+    << " milliseconds" << '\n' << '\n';
+  } else {
+    std::cout << "Time: " << std::chrono::duration_cast<std::chrono::seconds>(duration).count() 
+    << " seconds" << '\n' << '\n';
+  }
+}
