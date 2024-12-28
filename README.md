@@ -6,4 +6,4 @@ https://adventofcode.com
 
 Current progress:  
 2015 - In Progress  
-2024 - 100% (c++)  
+2024 - 100% (C++)  
