@@ -42,7 +42,6 @@ std::vector<std::string> SplitString(std::string string_to_split, std::string de
 
 std::string RemoveNonalphaCharacters(std::string s)
 {
-  //std::string ouput_string = "";
   int j = 0;
   for (int i = 0; i < s.size(); i++) 
   {
@@ -59,7 +58,6 @@ std::string RemoveNonalphaCharacters(std::string s)
 
 std::string RemoveNonalphanumericCharacters(std::string s)
 {
-  //std::string ouput_string = "";
   int j = 0;
   for (int i = 0; i < s.size(); i++) 
   {
