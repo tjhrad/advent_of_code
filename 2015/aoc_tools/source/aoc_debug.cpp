@@ -34,9 +34,9 @@ void Print(const std::vector<int>& input_data)
 {
   for (int i: input_data)
   {
-    std::cout << i;
+    std::cout << i << '\n';
   }
-  std::cout << std::endl;
+  std::cout << '\n';
 }
 
 void Print(const std::vector<std::vector<long long>>& input_data)
