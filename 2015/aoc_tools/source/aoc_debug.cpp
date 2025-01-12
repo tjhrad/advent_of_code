@@ -34,7 +34,7 @@ void Print(const std::vector<int>& input_data)
 {
   for (int i: input_data)
   {
-    std::cout << i << '\n';
+    std::cout << i << ' ';
   }
   std::cout << '\n';
 }
