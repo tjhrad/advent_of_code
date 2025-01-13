@@ -47,7 +47,6 @@ unsigned long long int BestConfiguration(std::vector<int>& packages, const int& 
     std::vector<bool> mask(size, true);
     mask.resize(package_count, false);
 
-    int count = 0;
     do {
       std::vector<int> combination;
       for (int i = 0; i < package_count; ++i) {
