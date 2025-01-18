@@ -9,8 +9,6 @@ std::vector<std::vector<std::string>> test_building = {
   {"E", ".", "HM", ".", "LM"}
 };
 
-//int fewest_steps = INT_MAX;
-
 int main() {
   std::cout << "AOC 2016 - DAY 11" << '\n';
 

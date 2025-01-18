@@ -43,6 +43,7 @@ std::vector<Node*> AStarSearch(Node* start) {
             }
             return path;
         }
+
         std::string current_key = StrigifyState(current->state);
         visited[current_key] = true;
         
@@ -51,7 +52,6 @@ std::vector<Node*> AStarSearch(Node* start) {
             
             // Skip neighbors (nodes) that have already been visited.
             std::string neighbor_key = StrigifyState(neighbor->state);
-
             if (visited.count(neighbor_key)) {continue;}
 
             int newGCost = current->gCost + 1;
