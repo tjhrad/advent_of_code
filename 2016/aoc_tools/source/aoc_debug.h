@@ -7,6 +7,7 @@
 
 void Print(const std::vector<std::vector<int>>& input_data);
 void Print(const std::vector<std::string>& input_data);
+void Print(const std::vector<std::vector<std::string>>& input_data);
 void Print(const std::vector<long long>& input_data);
 void Print(const std::vector<int>& input_data);
 void Print(const std::vector<std::vector<long long>>& input_data);

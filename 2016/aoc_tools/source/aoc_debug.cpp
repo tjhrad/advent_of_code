@@ -20,6 +20,15 @@ void Print(const std::vector<std::string>& input_data)
   }
 }
 
+void Print(const std::vector<std::vector<std::string>>& input_data) {
+  for (auto& v : input_data) {
+    for (auto& s : v) {
+      std::cout << s;
+    }
+    std::cout << '\n';
+  }
+}
+
 void Print(const std::vector<long long>& input_data)
 {
   for (long long ll: input_data)
