@@ -238,21 +238,17 @@ bool StringIsDigits(const std::string& input_string)
   return true;
 }
 
-std::string ConvertIntegerToBaseN(int num, int base)
-{
-  if (base < 2 || base > 36) 
-  {
+std::string ConvertIntegerToBaseN(int num, int base) {
+  if (base < 2 || base > 36) {
         return "Invalid base";
   }
 
-  if (num == 0)
-  {
+  if (num == 0) {
     return "0";
   }
 
   std::string result = "";
-  while (num > 0) 
-  {
+  while (num > 0) {
       int remainder = num % base;
       char digit = (remainder < 10) ? '0' + remainder : 'A' + remainder - 10;
       result += digit;
@@ -262,7 +258,7 @@ std::string ConvertIntegerToBaseN(int num, int base)
   return result;
 }
 
-void PrintTime(std::chrono::system_clock::time_point start, std::chrono::system_clock::time_point stop){
+void PrintTime(const std::chrono::system_clock::time_point& start, const std::chrono::system_clock::time_point& stop) {
   auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
   if (duration.count() < 1000) {
     std::cout << "Time: " << duration.count() << " microseconds" << '\n' << '\n';

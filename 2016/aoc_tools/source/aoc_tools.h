@@ -28,6 +28,6 @@ long long CombineIntInString(const std::string& input_data);
 int SumIntegers(const std::vector<int>& v);
 bool StringIsDigits(const std::string& input_string);
 
-void PrintTime(std::chrono::system_clock::time_point start, std::chrono::system_clock::time_point stop);
+void PrintTime(const std::chrono::system_clock::time_point& start, const std::chrono::system_clock::time_point& stop);
 
 #endif
