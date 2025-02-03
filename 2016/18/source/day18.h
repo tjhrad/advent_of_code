@@ -1,5 +1,5 @@
-#ifndef DAY16_H
-#define DAY16_H
+#ifndef DAY18_H
+#define DAY18_H
 
 #include <iostream>
 #include <numeric>
@@ -16,5 +16,7 @@
 void PartOne(const std::vector<std::string>& input_data);
 void PartTwo(const std::vector<std::string>& input_data);
 
+std::vector<std::string> BuildRoom(const std::string& starting_row, const int& num_rows);
+int CountSafeTiles(const std::vector<std::string>& room);
 
 #endif 
