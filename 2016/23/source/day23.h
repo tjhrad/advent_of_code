@@ -18,5 +18,7 @@
 void PartOne(const std::vector<std::string>& input_data);
 void PartTwo(const std::vector<std::string>& input_data);
 
+void RunInstructions(std::vector<std::vector<std::string>>& instructions);
+std::vector<std::vector<std::string>> InitializeInstructions(const std::vector<std::string>& input_data);
 
 #endif 
