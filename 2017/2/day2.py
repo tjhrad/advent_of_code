@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 import time
+import itertools
 import aoc_tools
 
-input_file_path = "./2/data/input.txt"
+input_file_path = "./data/input.txt"
 
-# Read file line by line
+# Read file
 with open(input_file_path,"r") as f:
   data = [line.strip() for line in f]
 
@@ -22,22 +23,16 @@ def part2():
   answer = 0
   for line in data:
     numbers = [int(x) for x in line.split()]
-    is_done = False
-    for n in numbers:
-      if (is_done):
+    for a, b in itertools.combinations(numbers, 2):
+      if (a % b == 0):
+        answer += int(a/b)
         break
-      for n2 in numbers:
-        if (n == n2):
-          continue
-        if (n2 % n == 0):
-          answer += int(n2/n)
-          is_done = True
-          break
-        if (n % n2 == 0):
-          answer += int(n/n2)
-          is_done = True
-          break
+      if (b % a == 0):
+        answer += int(b/a)
+        break
+    
   print("\nPart 2: " + str(answer))
+
 
 start_time = time.time()
 part1()
