@@ -47,26 +47,22 @@ def part2():
   for x in range(2, (side_length * side_length) + 1):
     if (direction == "RIGHT"):
       current_pos[0] += 1
-      val = sum_neighbors(arr, current_pos[1], current_pos[0])
-      arr[current_pos[1]][current_pos[0]] = val
       if (arr[current_pos[1] - 1][current_pos[0]] == 0):
         direction = "UP"
     elif (direction == "UP"):
       current_pos[1] -= 1
-      val = sum_neighbors(arr, current_pos[1], current_pos[0])
       if (arr[current_pos[1]][current_pos[0] - 1] == 0):
         direction = "LEFT"
     elif (direction == "LEFT"):
       current_pos[0] -= 1
-      val = sum_neighbors(arr, current_pos[1], current_pos[0])
       if (arr[current_pos[1] + 1][current_pos[0]] == 0):
         direction = "DOWN"
     elif (direction == "DOWN"):
       current_pos[1] += 1
-      val = sum_neighbors(arr, current_pos[1], current_pos[0])
       if (arr[current_pos[1]][current_pos[0 + 1]] == 0):
         direction = "RIGHT"
 
+    val = sum_neighbors(arr, current_pos[1], current_pos[0])
     arr[current_pos[1]][current_pos[0]] = val
 
     # Stop looping if a number larger than the target is found
