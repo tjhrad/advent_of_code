@@ -7,6 +7,8 @@ import aoc_tools
 def solve_part1(data):
     answer = 0
 
+    instructions = data[0].split(",")
+
     print(f"\nPart 1: {answer}")
 
 
