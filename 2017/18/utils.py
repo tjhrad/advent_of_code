@@ -1,0 +1,26 @@
+#!/usr/bin/env python3
+
+def format_time(seconds: float) -> str:
+    if seconds >= 1:
+        return f"{seconds:.3f} s"
+    elif seconds >= 1e-3:
+        return f"{seconds * 1e3:.3f} ms"
+    elif seconds >= 1e-6:
+        return f"{seconds * 1e6:.3f} µs"
+    else:
+        return f"{seconds * 1e9:.3f} ns"
+
+
+def is_integer(s):
+    """
+    Checks if a string is an integer
+    This will ignore '+' and '-'
+    """
+    if s[0] in ["+", "-"]:
+        if s[1:].isdigit():
+            return True
+        return False
+      
+    if s.isdigit():
+        return True
+    return False

@@ -6,11 +6,10 @@ import aoc_tools
 
 def solve_part1(data):
     STEPS = int(data[0])
-    ITERATIONS = 2017
     buffer = [0]
 
     current_index = 0
-    for i in range(ITERATIONS):
+    for i in range(2017):
         index = ((current_index + STEPS) % len(buffer)) + 1
         buffer.insert(index, i + 1)
         current_index = index
@@ -21,11 +20,10 @@ def solve_part1(data):
 
 def solve_part2(data):
     STEPS = int(data[0])
-    ITERATIONS = 50_000_000
 
     index = 0
     answer = 0
-    for i in range(1, ITERATIONS + 1):
+    for i in range(1, 50_000_001):
         index = (index + STEPS) % i
         if index == 0:
             answer = i
