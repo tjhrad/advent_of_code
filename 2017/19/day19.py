@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import time
-from collections import defaultdict
-from collections import deque
 import utils
 
 
