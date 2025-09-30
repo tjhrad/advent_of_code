@@ -75,7 +75,7 @@ class Particle:
         self.pos = tuple(p + v for p, v in zip(self.pos, self.vel))
 
     # Jump particle by a set time (t). Use to avoid simulating each step.
-    def jump_to(self, t):
+    def jump(self, t):
         self.pos = tuple(
             p0 + v0 * t + (a * t * (t + 1)) // 2
             for p0, v0, a in zip(self.pos, self.vel, self.acc)

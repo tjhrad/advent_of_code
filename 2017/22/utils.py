@@ -25,6 +25,7 @@ def is_integer(s):
         return True
     return False
 
+
 def manhattan_distance(point_1, point_2):
     return sum(abs(a-b) for a, b in zip(point_1, point_2))
 
