@@ -1,5 +1,17 @@
 #!/usr/bin/env python3
 
+import time
+
+
+def time_it(func, *args, **kwargs):
+    """Run a function with timing and print the elapsed time."""
+    start = time.time()
+    result = func(*args, **kwargs)
+    elapsed = time.time() - start
+    print(format_time(elapsed))
+    return result
+
+
 def format_time(seconds: float) -> str:
     if seconds >= 1:
         return f"{seconds:.3f} s"
