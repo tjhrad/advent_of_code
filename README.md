@@ -7,5 +7,6 @@ https://adventofcode.com
 Current progress:  
 2015 - 100% (C++)  
 2016 - 100% (C++)  
-2017 - In Progress (C++/Python)  
+2017 - 100% (C++/Python)  
+2018 - In Progress (Python)  
 2024 - 100% (C++)  
