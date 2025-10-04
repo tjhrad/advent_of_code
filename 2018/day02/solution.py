@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import helpers
 
 
@@ -17,7 +18,12 @@ def solve_part1(data):
 
 
 def solve_part2(data):
-    answer = 0
+    answer = ""
+    for pair in itertools.combinations(data, 2):
+        dif = [a for a, b in zip(pair[0], pair[1]) if a == b]
+        if len(dif) == (len(pair[0]) - 1):
+            answer = "".join(dif)
+            break
     print(f"\nPart 2: {answer}")
 
 
