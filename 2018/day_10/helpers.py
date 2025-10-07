@@ -73,3 +73,29 @@ def topological_sort(graph):
         raise ValueError("Graph has a cycle! Topological sort impossible.")
 
     return result
+
+
+def bounding_box_area(points):
+    """
+    Compute the bounding box of a set of points
+    points = numpy array of 2d points
+    size (n, 2)
+    """
+    xs, ys = points[:, 0], points[:, 1]
+    return (xs.max() - xs.min()) * (ys.max() - ys.min())
+
+
+def display_positions(starting_positions, velocities, t):
+    """
+    Converts a set of points to a grid and displays them.
+    This can be used to display a message created by organized points on a grid
+    starting_positions and velocities should both be numpy arrays of size (n, 2)
+    Example: See AOC 2018 day 10
+    """
+    points = starting_positions + velocities * t
+    xs, ys = points[:,0], points[:,1]
+    xs -= xs.min()
+    ys -= ys.min()
+    grid = np.full((ys.max() + 1, xs.max() + 1), ' ')
+    grid[ys, xs] = "#"
+    print("\n".join("".join(row) for row in grid))
