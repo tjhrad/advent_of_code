@@ -5,8 +5,6 @@ from collections import defaultdict
 import heapq
 
 
-# 5620 too
-
 def part_1(data):
     depth = int(data[0].split(": ")[1])
     tx, ty = [int(c) for c in data[1].split(": ")[1].split(",")]
