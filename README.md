@@ -8,5 +8,6 @@ Current progress:
 2015 - 100% (C++)  
 2016 - 100% (C++)  
 2017 - 100% (C++/Python)  
-2018 - In Progress (Python)  
+2018 - 100% (Python)  
+2019 - In progress (Python)  
 2024 - 100% (C++)  
