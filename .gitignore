@@ -1,6 +1,7 @@
 /**/**/data/*.txt
 /.vscode/
 .venv/
+.aoc_venv/
 /**/.vscode/
 __pycache__/
 *.py[cod]
