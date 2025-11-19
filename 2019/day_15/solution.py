@@ -7,57 +7,62 @@ import copy
 
 def part1(data):
     program = [int(x) for x in data[0].split(",")]
-    graph = get_graph(program)
-    print_graph(graph)
-    answer = 0
+    paths, map = find_path_bfs(program)
+    print_graph(map)
+    answer = min(len(p) for p in paths)
     print(f"\nPart 1: {answer}")
 
 
 def part2(data):
-    answer = 0
+    program = [int(x) for x in data[0].split(",")]
+    paths, map = find_path_bfs(program)
+    # TODO: Add new algo to fill the map with Oxygen
     print(f"\nPart 2: {answer}")
 
-# TODO: 
-# Create multiple bots that all are walking down separate paths.
-# Use BFS and at each point copy.deepcopy(bot) the bot 4x for each direction and store each in the queue.
-# Store the path in each bot
 def find_path_bfs(program):
-    start = (0, 0)
-    bot = Computer(program)
-    seen = set()
-    queue = deque([bot])
-
-def get_graph(program):
-    DIRECTIONS = [(0, -1), (0, 1), (-1, 0), (1, 0)]
     graph = defaultdict(str)
-    current_location = (0, 0)
-    current_direction = 0
-    remote_control = Computer(program)
-    graph[current_location] = '.'
+    graph[(0, 0)] = "."
 
-    while True:
-        remote_control.input_queue.append(current_direction + 1)
-        output = remote_control.run_until_output()
-        if output == 2:
-            next_location = (current_location[0] + DIRECTIONS[current_direction][0], current_location[1] + DIRECTIONS[current_direction][1])
-            graph[next_location] = 'O'
-            current_location = next_location
-            break
-        elif output == 1:
-            next_location = (current_location[0] + DIRECTIONS[current_direction][0], current_location[1] + DIRECTIONS[current_direction][1])
-            graph[next_location] = '.'
-            current_location = next_location
-        elif output == 0:
-            next_location = (current_location[0] + DIRECTIONS[current_direction][0], current_location[1] + DIRECTIONS[current_direction][1])
-            graph[next_location] = '#'
-            current_direction = (current_direction + 1) % 4
+    bot1 = Bot(program)
+    bot1.queue_next_move(1)
+    bot2 = Bot(program)
+    bot2.queue_next_move(2)
+    bot3 = Bot(program)
+    bot3.queue_next_move(3)
+    bot4 = Bot(program)
+    bot4.queue_next_move(4)
+
+    seen = set((0, 0))
+    paths = []
+    queue = deque([bot1, bot2, bot3, bot4])
+
+    while queue:
+        current = queue.popleft()
+
+        out = current.run_until_output()
+
+        if out == 2:
+            current.move()
+            graph[current.get_current_position()] = "O"
+            paths.append(current.get_path())
+        elif out == 1:
+            current.move()
+            graph[current.get_current_position()] = "."
+        elif out == 0:
+            current.move()
+            graph[current.get_current_position()] = "#"
+            continue
         else:
-            raise ValueError("UNKNOWN OUTPUT: {output}")
+            raise ValueError("Unknown value for out: {out}")
 
-        print_graph(graph)
-        input("Press enter")
-
-    return graph
+        for n in range(1, 5):
+            neighbor_bot = copy.deepcopy(current)
+            neighbor_bot.queue_next_move(n)
+            if neighbor_bot.next_pos is not None and neighbor_bot.next_pos not in seen:
+                queue.append(neighbor_bot)
+                seen.add(neighbor_bot.next_pos)
+                
+    return paths, graph
 
 
 def print_graph(graph):
@@ -76,7 +81,7 @@ def print_graph(graph):
         print(row)
 
 
-class Computer:
+class Bot:
     def __init__(self, program):
         self.program: Dict[int, int] = defaultdict(int)
         for i, v in enumerate(program):
@@ -88,6 +93,34 @@ class Computer:
         self.halted: bool = False
         self.input_queue: list[int] = []
 
+        self.current_pos = (0, 0)
+        self.next_pos = None
+        self.path = []
+        self.DIRECTIONS = [
+        (0, -1),
+        (0, 1),
+        (-1, 0),
+        (1, 0)
+    ]
+
+
+    def get_current_position(self):
+        return self.current_pos
+
+    def add_position(self, position):
+        path.append(position)
+
+    def get_path(self):
+        return self.path
+
+    def queue_next_move(self, d):
+        self.input_queue.append(d)
+        self.next_pos = (self.current_pos[0] + self.DIRECTIONS[d - 1][0], self.current_pos[1] + self.DIRECTIONS[d - 1][1])
+
+    def move(self):
+        self.current_pos = self.next_pos
+        self.path.append(self.current_pos)
+        self.next_pos = None
 
     def run_until_output(self):
         while True:
