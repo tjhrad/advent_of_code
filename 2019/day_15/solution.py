@@ -8,7 +8,6 @@ import copy
 def part1(data):
     program = [int(x) for x in data[0].split(",")]
     paths, map = find_path_bfs(program)
-    print_graph(map)
     answer = min(len(p) for p in paths)
     print(f"\nPart 1: {answer}")
 
@@ -16,8 +15,48 @@ def part1(data):
 def part2(data):
     program = [int(x) for x in data[0].split(",")]
     paths, map = find_path_bfs(program)
-    # TODO: Add new algo to fill the map with Oxygen
+    answer = time_to_fill(map)
     print(f"\nPart 2: {answer}")
+
+
+def time_to_fill(map):
+    DIRECTIONS = [
+        (0, -1),
+        (0, 1),
+        (-1, 0),
+        (1, 0)
+    ]
+    time = 0
+
+    start = None
+    for key, val in map.items():
+        if val == "O":
+            start = key
+
+    queue = deque([start])
+    seen = set()
+
+    while queue:
+        next_queue = []
+        for current in queue:
+            for d in DIRECTIONS:
+                next_pos = (current[0] + d[0], current[1] + d[1])
+                if next_pos in seen:
+                    continue
+
+                if next_pos in map and map[next_pos] == "#":
+                    continue
+                
+                map[next_pos] = "O"
+                seen.add(next_pos)
+                next_queue.append(next_pos)
+        queue.clear()
+        [queue.append(n) for n in next_queue]
+        if queue:
+            time += 1
+
+    return time
+
 
 def find_path_bfs(program):
     graph = defaultdict(str)
@@ -65,7 +104,7 @@ def find_path_bfs(program):
     return paths, graph
 
 
-def print_graph(graph):
+def print_map(graph):
     xmin = min(x for x, y in graph.keys())
     ymin = min(y for x, y in graph.keys())
     xmax = max(x for x, y in graph.keys())
@@ -101,7 +140,7 @@ class Bot:
         (0, 1),
         (-1, 0),
         (1, 0)
-    ]
+        ]
 
 
     def get_current_position(self):
